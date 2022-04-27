@@ -1,0 +1,19 @@
+(library
+ (name flint)
+ (public_name oflint)
+ (libraries core)
+ (preprocess (pps ppx_jane))
+ (flags (:standard -w -9-27))
+  (ctypes
+  (external_library_name flint)
+  (build_flags_resolver pkg_config)
+  (headers (include "fmpz.h"  "nmod_poly.h" "fmpq.h" "fmpz_poly.h" "fmpz_poly_mat.h" "mpoly.h" "fmpz_mpoly.h"))
+ (type_description
+   (instance Type)
+   (functor Type_description))
+  (function_description
+   (concurrency unlocked)
+   (instance Function)
+   (functor Function_description))
+  (generated_types Types_generated)
+  (generated_entry_point C)))
